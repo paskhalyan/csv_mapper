@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Mapper</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+<br>
+<br>
+<br>
+<table style="width:100%">
+    {% for obj in objects %}
+        <tr>
+            <td>{{ obj.id_in_doc }}</td>
+            <td>{{ obj.first_name }}</td>
+            <td>{{ obj.last_name }}</td>
+            <td>{{ obj.app_name }}</td>
+            <td>{{ obj.ip_address }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

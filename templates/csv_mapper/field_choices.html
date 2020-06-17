@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<h2>Choose db fields for CSV fields</h2>
+
+<form action="{% url 'process_csv' %}">
+    {% for model_field in model_fields %}
+        <p>
+            {{ model_field }} -
+            <select name={{ model_field }} required>
+                <option disabled="true" selected>Select CSV Field</option>
+                {% for csv_field in csv_fields %}
+                    <option>{{ csv_field }}</option>
+                {% endfor %}
+            </select>
+        </p>
+    {% endfor %}
+    <input type="submit" value="Confirm">
+</form>
+
+</body>
+</html>

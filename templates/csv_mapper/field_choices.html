@@ -4,19 +4,50 @@
 
 <h2>Choose db fields for CSV fields</h2>
 
-<form action="{% url 'process_csv' %}">
-    {% for model_field in model_fields %}
-        <p>
-            {{ model_field }} -
-            <select name={{ model_field }} required>
-                <option disabled="true" selected>Select CSV Field</option>
-                {% for csv_field in csv_fields %}
-                    <option>{{ csv_field }}</option>
-                {% endfor %}
-            </select>
-        </p>
-    {% endfor %}
-    <input type="submit" value="Confirm">
+<form action="{% url 'process_csv' %}" method="post">
+    {% csrf_token %}
+        <div class="fieldWrapper">
+            {{ form.id_in_doc.errors }}
+            <label for="id_id_in_doc">id_in_doc</label>
+            {{ form.id_in_doc }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.first_name.errors }}
+            <label for="id_first_name">first_name</label>
+            {{ form.first_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.last_name.errors }}
+            <label for="id_last_name">last_name</label>
+            {{ form.last_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.email.errors }}
+            <label for="id_email">email</label>
+            {{ form.email }}
+        </div>
+        <!-- location -->
+        <div class="fieldWrapper">
+            {{ form.gender.errors }}
+            <label for="id_gender">gender</label>
+            {{ form.gender }}
+        </div>
+        <!-- description -->
+        <div class="fieldWrapper">
+            {{ form.ip_address.errors }}
+            <label for="id_ip_address">ip_address</label>
+            {{ form.ip_address }}
+        </div>
+        <!-- expire -->
+        <div class="fieldWrapper">
+            {{ form.app_name.errors }}
+            <label for="id_app_name">app_name</label>
+            {{ form.app_name }}
+        </div>
+        <button type="submit">
+            <i class="fa fa-thumb-tack"></i> Post
+        </button>
+{#    {% endfor %}#}
 </form>
 
 </body>

@@ -28,6 +28,8 @@ class UploadCSVView(View):
             choices_form = ChoicesForm()
             context = {'form': choices_form}
 
+            # Amir
+
             return render(request, 'csv_mapper/field_choices.html', context)
 
 
